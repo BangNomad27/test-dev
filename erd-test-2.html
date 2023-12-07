@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD TEST - Soal 2</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Soal 2</h2>
+    <h3 class="output"></h3>
+  </div>
+
+  <script>
+    function cariAngkaTerbesar(arr) {
+        if (arr.length < 2) {
+          // jika array kurang dari 2, maka tidak ada selisihnya
+          return null;
+        }
+
+        let perbedaanMaksimal = arr[1] - arr[0];
+        let minimalElemen = arr[0];
+
+        for (let i = 1; i < arr.length; i++) {
+          const elemenBaru = arr[i];
+          const perbedaanElemen = elemenBaru - minimalElemen;
+
+          // update nilai selisih dan maksimum jika ada selisih yang lebih besar
+          if (perbedaanElemen > perbedaanMaksimal) {
+            perbedaanMaksimal = perbedaanElemen;
+          }
+
+          // update nilai elemen minimum jika ada elemen yang lebih kecil
+          if (elemenBaru < minimalElemen) {
+            minimalElemen = elemenBaru;
+          }
+        }
+
+        return perbedaanMaksimal;
+      }
+
+      const harga = [10, 7, 5, 8, 11, 9, 1];
+      const hasil = cariAngkaTerbesar(harga);
+
+      // cek
+      console.log(hasil);
+
+      // output
+      const outputText = document.querySelector('.output');
+      outputText.innerHTML = `Perbedaannya: ${hasil}`;
+
+  </script>
+</body>
+</html>

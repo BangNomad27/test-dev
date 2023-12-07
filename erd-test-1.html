@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD TEST - Soal 1</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Soal 1</h2>
+    <div class="output"></div>
+  </div>
+
+  <script>
+    function hasilAngka(n) {
+        let result = ''; // string kosong
+
+        for (let i = 1; i <= n; i++) {
+          // Membuat angka sebelum tanda **
+          for (let j = 1; j <= i; j++) {
+            result += j;
+          }
+
+          // Tambah tanda **
+          result += '**';
+
+          // Membuat angka setelah tanda **
+          for (let k = i + 1; k <= n; k++) {
+            result += k;
+          }
+          result += '\n';
+        }
+
+        return result;
+      }
+
+      // contoh input n = 5
+      const output1 = hasilAngka(5);
+      console.log(output1); // cek
+
+      // contoh input n = 4
+      const output2 = hasilAngka(4);
+      console.log(output2); // cek
+
+      // output
+      const outputText = document.querySelector('.output');
+      outputText.innerHTML = `<pre>${output1}\n${output2}</pre>`;
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API TEST</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="container">
+      <div class="name">
+        Display Name: {{ payload.displayName }}
+      </div>
+      <div class="subject">
+        Subject: {{ payload.subject }}
+      </div>
+      <div class="email">
+        Email: {{ payload.email }}
+      </div>
+      <div class="phone">
+        Phone: {{ payload.phone }}
+      </div>
+      <div class="message">
+        Message: {{ payload.message }}
+      </div>
+      <div class="job-apply">
+        Job Apply Type: {{ payload.ptJobApplyType }}
+      </div>
+      <div class="active">
+        Active: {{ payload.isActive }}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        payload: {}
+      },
+      mounted() {
+        this.fetchPayload();
+      },
+      methods: {
+        async fetchPayload() {
+          try {
+            const response = await fetch('payload.json'); // path
+
+            const data = await response.json();
+            this.payload = data;
+          } catch (err) {
+            console.error('Error fetching payload:', err);
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
